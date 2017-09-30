@@ -18,7 +18,7 @@ function fibFib(ff) {
     let a = 0, b = 1, temp, res;
     
     while(a <= root){
-        res = root = a ? true : false;
+        res = root == a ? true : false;
 
         temp = a;
         a += b;
