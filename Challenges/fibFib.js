@@ -15,16 +15,15 @@
 
 function fibFib(ff) {
     let root = Math.sqrt(ff);
-    let a = 0, b = 1, temp;
+    let a = 0, b = 1, temp, res;
     
     while(a <= root){
-        if (root == a || root == b) {
-            return true;
-        }
+        res = root = a ? true : false;
+
         temp = a;
         a += b;
         b = temp;
     }
     
-    return false
+    return res
 }
