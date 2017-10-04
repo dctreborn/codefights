@@ -40,3 +40,14 @@ function firstDuplicate(a) {
     }
     return -1;
 }
+
+//original response
+
+function firstDuplicate(a) {       
+    for(let i = 0; i < a.length; i++){        
+        if (a.indexOf(a[i]) != i){
+            return a[i];
+        }
+    }
+    return -1;
+}
