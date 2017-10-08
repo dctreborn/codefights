@@ -32,15 +32,13 @@
 //     [output] string
 
 function truncateString(s) {
-    let a = s[0], len = s.length - 1, b = s[len], t = false, z;
+    let a = s[0], len = s.length - 1, b = s[len], z;
     
     z = a % 3 == 0 ? s.substring(1) :
         b % 3 == 0 ? s.substring(0, len) :
         (a + b) % 3 == 0 ? s.substring(1, len) : s;
     
-    t = z == s ? true : false;
-    
-    if (t) {
+    if (z == s) {
         return z;
     } else {
         return truncateString(z);
