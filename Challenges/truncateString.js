@@ -38,9 +38,5 @@ function truncateString(s) {
         b % 3 == 0 ? s.substring(0, len) :
         (a + b) % 3 == 0 ? s.substring(1, len) : s;
     
-    if (z == s) {
-        return z;
-    } else {
-        return truncateString(z);
-    }
+        return z == s ? z : truncateString(z);
 }
