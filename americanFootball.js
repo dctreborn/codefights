@@ -33,7 +33,7 @@
 
 //     Number of distinct scoring combinations to obtain the given score modulo 109 + 7.
 
-//work in progress
+//work in progress; see https://codefights.com/challenge/y7JZ36peqTkMYpZm8/solutions for solutions
 function americanFootball(score) {
     let table = new Array(score + 1).fill(0);
     let pts = [3, 6, 2, 1, 2, 0];
@@ -45,8 +45,8 @@ function americanFootball(score) {
             table[j] += table[j - pts[i]];
             if(i == 1){
                 for(let x = 3; x < len + 3; x++){
-                    for(let k = pts[x]; k < len + 3; k++){
-                        table[k] += table[k - pts[x]]
+                    for(let k = pts[x]; k < score + 1; k++){
+                        table[k] += table[k - pts[x]];
                     }    
                 }                            
             }
