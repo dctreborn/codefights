@@ -56,37 +56,37 @@
 
 //     A string containing the message for the cat regarding if he would be allowed to watch the shows or not. If there is an overlapping and exceeding of the time limit at the same time, you should output the exceeding of the time limit message.
 
-function catflix(shows, limit, name) {
-    let time1, time2, timeDiff = 0, times = [];
-    let lim = +limit.substring(0,2) + limit.substring(3,5) / 60;
-    
-    shows.map( x => {
-        time2 = +x[2].substring(0,2) + x[2].substring(3,5) / 60;
-        time1 = +x[1].substring(0,2) + x[1].substring(3,5) / 60;
-        timeDiff += time2 - time1;
-        times.push([time1, time2]);
-    });
-    
-    console.log(times);
-    
-    if(timeDiff > lim){
-        return `You are not allowed to watch so much TV, ${name}`;
-    }
-    
-    for(let i = 0; i < times.length - 2; i++){
-        for(let k = i + 1; k < times.length - 1; k++){
-            for(let j = 0; j < 2; j++){
-                // console.log(`${times[i][0]} ${times[k][j]} ${times[i][1]}`);
-                console.log(`${times[k][j]} >= ${times[i][0] - 1/60} and ${times[k][j]} <= ${times[i][1] + 1/60}`);
-                console.log(`${times[k][j] >= times[i][0] - 1/60} ${times[k][j] <= times[i][1] + 1/60}`);
-                console.log(times[k][j] >= (times[i][0] - 1/60));
-                console.log(times[k][j] <= (times[i][1] + 1/60));
-                if(times[k][j] >= (times[i][0]) && times[k][j] <= (times[i][1])) {
-                    return `${shows[i][0]} and ${shows[k][0]} overlap, pick one, ${name}`;
-                }
-            }            
-        }        
-    }
-    
-    return `You may watch your shows, ${name}`;
+function catflix(shows, limit, name){
+	let time1, time2, time3, timeDiff = 0, times = [];
+	let lim = +limit.substring(0,2) + limit.substring(3,5) / 60;
+
+	shows.map( x => {
+		time2 = +x[2].substring(0,2) + x[2].substring(3,5) / 60;
+		time1 = +x[1].substring(0,2) + x[1].substring(3,5) / 60;
+		timeDiff += time2 - time1;
+		times.push([x[0], time1, time2]);
+	});
+
+	times.sort( (a,b) => {
+		return a[1] - b[1];
+	});
+
+	if(timeDiff > lim){
+		return `You are not allowed to watch so much TV, ${name}`;
+	}
+
+	for(let i = 0; i < times.length - 1; i++){
+		for(let k = i + 1; k < times.length; k++){
+			for(let j = 1; j < 3; j++){
+				time1 = times[k][j];
+				time2 = times[i][1] - 1/60;
+				time3 = times[i][2] + 1/60;
+				if(time1 >= time2 && time1 <= time3){
+					return `${times[i][0]} and ${times[k][0]} overlap, pick one, ${name}`;
+				}
+			}
+		}
+	}
+
+	return `You may watch your shows, ${name}`;
 }
