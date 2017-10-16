@@ -39,7 +39,6 @@ function lazyFriends(houses, maxDist) {
         
         if (i + f < len) {
             while(houses[i + f] - houses[i] <= maxDist){
-                console.log(houses[i + f]);
                 f++;
                 count++;
             }
