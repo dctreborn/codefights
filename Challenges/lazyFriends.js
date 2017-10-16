@@ -35,8 +35,7 @@ function lazyFriends(houses, maxDist) {
     return houses.map( (x, i) => {
         let f = 1,
             r = 1,
-            count = 0,
-            len = houses.length;        
+            count = 0;    
        
             while(houses[i + f] - x <= maxDist){                
                 f++;
