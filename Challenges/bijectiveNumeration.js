@@ -32,7 +32,8 @@
 //     Clarification: each domain can only hold numbers 01-99 before moving to the next domain
 
 function bijectiveNumeration(n, domain) {
-    let num = Math.ceil(n/99) - 1 + n % 100;
+    let index =  Math.ceil(n/99)-1,
+        num = index + n % 100;
 
-    return `${domain[Math.ceil(n/99)-1]}-${num < 10 ? "0" + num : num}`;
+    return `${domain[index]}-${num < 10 ? "0" + num : num}`;
 }
