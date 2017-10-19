@@ -52,7 +52,17 @@ function accessList(groups, access, queries) {
             g[key[j]] = {};
             g[key[j]][key[0]] = "";
             g[key[j]][key[j]] = "";
-            for(let k in g)
+        }
+    }
+    
+    for(let i = 0; i < groups.length; i++){
+        for(let j = 0; j < groups.length; j++){
+            if(groups[i].includes(groups[j][0], 1)){
+                key = groups[i];
+                for(let k = 0; k < groups[j].length; k++){
+                    g[groups[j][k]][key[0]] = "";
+                }                
+            }
         }
     }
         
