@@ -44,11 +44,34 @@ function accessList(groups, access, queries) {
     //  first, keys based on group number
     //  then add IDs based on direct and indirect membership
     //  "key" in obj to find if key exists
-    let g = {};
+    let g = {}, key;
     
     for(let i = 0; i < groups.length; i++){
-        g[groups[i][0]] = "";
+        for(let j = 0; j < groups[i].length; j++){
+            key = groups[i];  
+            g[key[j]] = {};
+            g[key[j]][key[0]] = "";
+            g[key[j]][key[j]] = "";
+            for(let k in g)
+        }
     }
+        
+        // if groups.slice[1, groups[i.length]].includes(groups[i][j]){
+        //     g[key[j]][key[index of ID]]
+        // }
+    
+    console.log(g);
+//     for(let i = 0; i < groups.length; i++){
+//         g[groups[i][0]] = groups.slice(1, groups[i].length);
+//     }
+    
+//     for(let group in g){
+//         for(let mem in g){
+//             if(g[group].includes(mem)){
+                
+//             }   
+//         }        
+//     }
     
     return queries.map( x => {
         
