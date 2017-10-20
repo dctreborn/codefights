@@ -36,6 +36,10 @@
 
 //     The access level for each of the IDs in queries as an integer 0-7 inclusive.
 
+
+// solution by kov
+// https://codefights.com/challenge/vNJBZ2ZvXJkN4YiJk/solutions/nDNE6F3jSETD5dDgT
+
 function accessList(groups, access, queries) {
     // map groups to member IDs using objects?
     // then search query
