@@ -25,23 +25,12 @@
 //     true if sequence is cyclic increasing, false otherwise.
 
 function cyclicSequence(sequence) {
-    let len = sequence.length, down = 0;
+    let down = 0;
     
-    if (len == 1){
-        return true;
-    }
+    sequence.map( (x, i) => {
+        down += i == sequence.length - 1 ? (x >= sequence[0] ? 1 : 0) : 0;
+        down += x >= sequence[i + 1] ? 1 : 0;
+    });
     
-    for(let i = 0; i < len; i++){
-        if(i == len - 1) {
-            down += sequence[i] >= sequence[0] ? 1 : 0;
-        } else if (sequence[i] >= sequence[i + 1]) {
-            down++;
-        }
-        
-        if (down > 1) {
-            return false;
-        }
-    }
-    
-    return true;
+    return down > 1 ? 0 : 1;
 }
