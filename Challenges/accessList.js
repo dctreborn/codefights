@@ -44,8 +44,19 @@ function accessList(groups, access, queries) {
     //  first, keys based on group number
     //  then add IDs based on direct and indirect membership
     //  "key" in obj to find if key exists
-    let g = {}, key;
+    let g = {}, a = {}, key;
     
+    // create access rights
+    for(let i = 0; i < access.length; i++){
+        key = access[i];
+        
+        a[key[0]] = {};
+        a[key[0]] = key[1] > 0 ? key[2] : -key[2];
+    }
+    
+    console.log(a);
+    
+    // create group associations
     for(let i = 0; i < groups.length; i++){
         for(let j = 0; j < groups[i].length; j++){
             key = groups[i];  
@@ -65,23 +76,8 @@ function accessList(groups, access, queries) {
             }
         }
     }
-        
-        // if groups.slice[1, groups[i.length]].includes(groups[i][j]){
-        //     g[key[j]][key[index of ID]]
-        // }
-    
-    console.log(g);
-//     for(let i = 0; i < groups.length; i++){
-//         g[groups[i][0]] = groups.slice(1, groups[i].length);
-//     }
-    
-//     for(let group in g){
-//         for(let mem in g){
-//             if(g[group].includes(mem)){
-                
-//             }   
-//         }        
-//     }
+
+    console.log(g);    
     
     return queries.map( x => {
         
