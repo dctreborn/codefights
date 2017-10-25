@@ -24,20 +24,22 @@
 //     The size of the longest nice subsequence of a.
 
 function niceSubsequence(a) {
-    a.sort( (a, b) => a - b);
-    let len = a.length, long = 0, temp, val;
+    let len = a.length, long = 0, temp, val, count;
     
     for(let i = 0; i < len; i++){
         val = a[i];        
         temp = 0;
+        count = 0;
         
-        for(let k = i; k < i + val; k++){           
+        for(let k = Math.max(i - val, 0); k < Math.min(i + val, len); k++){           
+            count++;
+            temp++;
             
-            if(a[k] < val || a[k] == null){                
+            if(a[k] < val || a[k] == null){ 
+                count = 0;
                 temp = 0;
+            } else if (count == val){
                 break;
-            } else {
-                temp++;
             }
         }
         
@@ -46,3 +48,4 @@ function niceSubsequence(a) {
     
     return long;
 }
+
