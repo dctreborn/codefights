@@ -27,25 +27,29 @@ function niceSubsequence(a) {
     let len = a.length, long = 0, temp, val, count;
     
     for(let i = 0; i < len; i++){
-        val = a[i];        
-        temp = 0;
+        val = a[i];  
         count = 0;
-        
-        for(let k = Math.max(i - val, 0); k < Math.min(i + val, len); k++){           
-            count++;
-            temp++;
-            
-            if(a[k] < val || a[k] == null){ 
-                count = 0;
-                temp = 0;
-            } else if (count == val){
+        // search left
+        for(let k = i; k >= Math.max(i - val, 0); k--){
+            if(a[k] < val){
                 break;
+            } else {
+                count++;
+            }
+        }
+        // search right
+        temp = i + val - count + 1;
+        count--;
+        for(let j = i; j < Math.min(temp, len); j++){
+            if(a[j] < val){
+                break;
+            } else {
+                count++;
             }
         }
         
-        long = temp > long ? temp : long;
+        long = count > long ? count : long;
     }
     
     return long;
 }
-
