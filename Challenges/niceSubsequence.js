@@ -30,7 +30,8 @@ function niceSubsequence(a) {
         val = a[i];  
         count = 0;
         // search left
-        for(let k = i; k >= Math.max(i - val, 0); k--){
+        temp = Math.max(i - val, 0);
+        for(let k = i; k >= temp; k--){
             if(a[k] < val){
                 break;
             } else {
@@ -40,11 +41,15 @@ function niceSubsequence(a) {
         // search right
         temp = i + val - count + 1;
         count--;
-        for(let j = i; j < Math.min(temp, len); j++){
-            if(a[j] < val){
-                break;
-            } else {
-                count++;
+        if(temp > len){
+            // do nothing
+        } else{
+            for(let j = i; j < temp; j++){
+                if(a[j] < val){
+                    break;
+                } else {
+                    count++;
+                }
             }
         }
         
