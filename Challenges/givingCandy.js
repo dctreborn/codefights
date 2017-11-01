@@ -45,7 +45,7 @@
 
 function givingCandy(candies, kids) {
     let s = "Give", buy = "Oops! You should buy some more", num; 
-    let len = candies.length, g = 0, b = 0, last, pre, post;
+    let len, g = 0, b = 0, last, pre, post;
       
     candies.map( (x, i) => {
         num = Math.floor(x[1]/kids);
@@ -57,24 +57,17 @@ function givingCandy(candies, kids) {
             g++;
         }
         
-        if(i + 1 == len){
+        if(i + 1 == candies.length){
             buy = buy.slice(0, -1);
             s = s.slice(0, -1);
             
             last = b ? buy.lastIndexOf(",") : s.lastIndexOf(",");
             len = b ? buy.length : s.length;
-            pre = b ? buy.substring(0, last) : s.substring(0, last);
-            post = b ? buy.substring(last + 1, len) : s.substring(last + 1, len);
+            pre = b ? (buy.substring(0, last) + (b > 2 ? "," : "")): (s.substring(0, last) + (g > 2 ? ",": ""));
+            post = " and" + (b ? buy.substring(last + 1, len) : s.substring(last + 1, len));
             
-            if(b > 2){
-                buy = pre + ", and" + post;
-            } else if(b == 2){
-                buy = pre + " and" + post;
-            } else if(g > 2){
-                s = pre + ", and" + post;
-            } else if (g == 2){
-                s = pre + " and" + post;
-            }
+            buy = b > 1 ? pre + post : buy;
+            s = g > 1 ? pre + post : s;
         }
     });
     
