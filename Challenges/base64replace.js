@@ -46,7 +46,7 @@ function base64replace(source, strFrom, strTo) {
     let s = "";
     
     for(let i = 0; i < strFrom.length; i++){
-        if(!strFrom[i].match(/[a-z0-9 ]/i)/){
+        if(!strFrom[i].match(/[a-z0-9 ]/i)){
             s += "\\" + strFrom[i];
         } else {
             s += strFrom[i];
