@@ -39,6 +39,8 @@
 
 //     The final replaced string, encoded in base64.
 
+//     Readable successful solution: https://codefights.com/challenge/MQnApScuWMJKBnNyR/solutions/fje9wwHYMbn9GmgeW
+
 function base64replace(source, strFrom, strTo) {
     //btoa and atob do not work in codefights
     let a = Buffer(source, 'base64').toString();
