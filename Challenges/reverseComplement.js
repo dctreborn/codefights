@@ -30,15 +30,14 @@
 // A DNA strand.
 
 function ReverseComplement(strand) {
-    let dict = {
+    let d = {
         A: 'T',
         T: 'A',
         G: 'C',
         C: 'G',
         W: 'S',
-        S: 'W',
-        N: 'N'
+        S: 'W'
     };
     
-    return strand.toUpperCase().split("").reverse().map( x => dict[x]).join("");
+    return strand.toUpperCase().split("").reverse().map( x => d[x] || x).join("");
 }
