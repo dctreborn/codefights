@@ -30,32 +30,15 @@
 // A DNA strand.
 
 function ReverseComplement(strand) {
-    let s = "";
+    let dict = {
+        A: 'T',
+        T: 'A',
+        G: 'C',
+        C: 'G',
+        W: 'S',
+        S: 'W',
+        N: 'N'
+    };
     
-    for(let i = strand.length - 1; i >= 0; i--){
-        switch(strand[i].toUpperCase()){
-            case 'A':
-                s += 'T';
-                break;
-            case 'T':
-                s += 'A';
-                break;
-            case 'G':
-                s += 'C';
-                break;
-            case 'C':
-                s += 'G';
-                break;
-            case 'S':
-                s += 'W';
-                break;
-            case 'W':
-                s += 'S'
-                break;
-            default:
-                s += 'N';
-        }
-    }
-    
-    return s;
+    return strand.toUpperCase().split("").reverse().map( x => dict[x]).join("");
 }
